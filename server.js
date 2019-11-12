@@ -3,6 +3,7 @@ let morgan = require( "morgan" );
 let mongoose = require( "mongoose" );
 let bodyParser = require( "body-parser" );
 let { PetList } = require('./model');
+let { DATABASE_URL, PORT } = require('./config');
 
 let app = express();
 let jsonParser = bodyParser.json();
@@ -112,7 +113,7 @@ function closeServer(){
 		});
 }
 
-runServer( 8080, "mongodb://localhost/petsDB" )
+runServer( PORT, DATABASE_URL )
 	.catch( err => {
 		console.log( err );
 	});
